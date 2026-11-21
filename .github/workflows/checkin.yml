@@ -1,7 +1,7 @@
 name: newapi.ai 自动签到
 on:
   schedule:
-    - cron: '0 */8 * * *'
+    - cron: '0 1 * * *'
   workflow_dispatch:
     inputs:
       accounts:
@@ -35,6 +35,12 @@ jobs:
         timezoneWindows: "China Standard Time"
 
     - uses: actions/checkout@v4
+    - name: 随机延迟 0-50 分钟
+        shell: pwsh
+    run: |
+    $delay = Get-Random -Minimum 0 -Maximum 3000
+    Write-Host "随机等待 $delay 秒"
+  Start-Sleep -Seconds $delay  
 
     - uses: astral-sh/setup-uv@v3
       with:
