@@ -36,11 +36,11 @@ jobs:
 
     - uses: actions/checkout@v4
     - name: 随机延迟 0-50 分钟
-        shell: pwsh
-    run: |
-    $delay = Get-Random -Minimum 0 -Maximum 3000
-    Write-Host "随机等待 $delay 秒"
-  Start-Sleep -Seconds $delay  
+      shell: pwsh
+      run: |
+        $delay = Get-Random -Minimum 0 -Maximum 3000
+        Write-Host "随机等待 $delay 秒"
+        Start-Sleep -Seconds $delay 
 
     - uses: astral-sh/setup-uv@v3
       with:
